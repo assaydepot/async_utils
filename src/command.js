@@ -1,7 +1,9 @@
+var _ = require('underscore')._;
 var child_process = require('child_process');
 module.exports = function(commandStr, args, options, callback) {
+  callback = _.once(callback);
 	var child = child_process.spawn(commandStr, args)
-	, result = '';
+	var result = '';
 	
 	parse = typeof (options && options.parse) === 'function' ? options.parse : function(x) {
 		
@@ -38,7 +40,7 @@ module.exports = function(commandStr, args, options, callback) {
 	// when command exits
 	child.on('exit', function (code) {
 		// execute the callback with the results from the workflow
-		// callback(code || 0, result);
+		callback(code || 0, result);
 	});
 	
 	child.on('close', function (code) {

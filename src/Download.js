@@ -4,6 +4,7 @@ var node_request = require('request');
 var async = require('async');
 var ObjTree = require('objtree');
 var fs = module.require('fs');
+var command = require('./command');
 
 // https://github.com/mscdex/node-ftp
 var Ftp = require('ftp');
@@ -376,31 +377,10 @@ var protocol_methods = {
 				_.wait(0.01, function() {
 					callback(null, this);
 				}, this);
-				return this;
+			} else {
+        console.log(`info: Downloading .zip file using "curl" ${this.hostname}/${this.path} -o ${this.zipname}`)
+        command('curl', [`${this.hostname}/${this.path}`, '-o', this.zipname], {pipe:true}, callback);
 			}
-			
-			var self = this;
-			var file = fs.createWriteStream( self.zipname );
-			node_request.get({
-				uri: [this.hostname, this.path].join('/'),
-				encoding: null
-			}, function(response) {
-				if (self.verbose) console.log('[ZIP] info: Piping...');
-			})
-			.pipe( file )
-			.on('error', function(err) {
-				console.log('[ZIP] error:', err.message);
-				callback(err);
-			});
-
-			file.on('finish', function() {
-				file.close(function() {
-					if (self.verbose) console.log('[ZIP] info: Finished Piping.');
-					self.downloaded = true;
-					callback(null, self);
-				}); // close() is async, call cb after close completes.
-			});
-
 			return this;
 		}			
 	}
