@@ -1,6 +1,6 @@
 {
   "name": "async_utils",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Request, child process, FTP, and ZIP wrappers.",
   "main": "index.js",
   "repository": {
@@ -27,7 +27,8 @@
     "objtree": "git+ssh://git@github.com/assaydepot/ObjTree.git",
     "request": "^2.60.x",
     "toolbelt": "git+ssh://git@github.com/assaydepot/toolbelt.git",
-    "underscore": "^1.4.4"
+    "underscore": "^1.4.4",
+    "wget": "0.0.1"
   },
   "devDependencies": {
     "mocha": "^6.1.4"
