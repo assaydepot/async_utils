@@ -4,7 +4,7 @@ var node_request = require('request');
 var async = require('async');
 var ObjTree = require('objtree');
 var fs = module.require('fs');
-var command = require('./command');
+var exec = require('./exec');
 var wget = require('./wget');
 
 // https://github.com/mscdex/node-ftp
