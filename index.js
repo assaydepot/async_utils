@@ -1,6 +1,6 @@
 module.exports = {
 	request: require('./src/request'),
-	command: require('./src/command'),
+	exec: require('./src/exec'),
 	Download: require('./src/Download').Download,
 	FTP: require('./src/Download').FTP,
 	ZIP: require('./src/Download').ZIP,
