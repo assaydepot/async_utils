@@ -24,7 +24,7 @@
     "ftp": "^0.3.10",
     "jszip": "^3.1.5",
     "node-stream-zip": "^1.15.0",
-    "objtree": "git+ssh://git@github.com/assaydepot/ObjTree.git",
+    "objtree": "github:assaydepot/ObjTree",
     "request": "^2.60.x",
     "toolbelt": "github:assaydepot/toolbelt",
     "underscore": "^1.4.4",
